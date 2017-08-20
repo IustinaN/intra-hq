@@ -8,6 +8,8 @@ import Positions from './Positions';
 import RecruitmentDashboard from './RecruitmentDashboard';
 import TakeTest from './TakeTest';
 import TrainingPaths from './TrainingPaths';
+import TrainingsHomepage from './TrainingsHomepage';
+import NewTraining from './TrainingsHomepage/components/newTraining';
 
 const Routes = () =>
   <div>
@@ -16,6 +18,8 @@ const Routes = () =>
     <Route path={'/employees-homepage'} component={EmployeesHomepage} />
     <Route path={'/positions'} component={Positions} />
     <Route path={'/recruitment-dashboard'} component={RecruitmentDashboard} />
+    <Route path={'/trainings-homepage'} component={TrainingsHomepage} />
+    <Route path={'/add-training'} component={NewTraining} />
     <Route path={'/training-paths'} component={TrainingPaths} />
     <Route path={'/take-test'} component={TakeTest} />
     <Route path={'/'} exact component={App} />

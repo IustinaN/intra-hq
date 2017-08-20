@@ -32,6 +32,9 @@ class App extends Component {
               <Link to="/take-test">TakeTest</Link>
             </span>
             <span className="App-link">
+              <Link to="/trainings-homepage">TrainingsHomepage</Link>
+            </span>
+            <span className="App-link">
               <Link to="/training-paths">TrainingPaths</Link>
             </span>
           </div>
