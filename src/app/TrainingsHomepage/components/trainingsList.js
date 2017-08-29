@@ -1,7 +1,13 @@
 import React from 'react';
-import TrainingItem from './trainingItem';
+import TrainingItemContainer from './trainingItemContainer';
 
 class TrainingsList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { trainings: props.trainings };
+    console.log('state trainings', this.state.trainings);
+  }
+
   render() {
     return (
       <table className="Trainings-table">
@@ -16,7 +22,7 @@ class TrainingsList extends React.Component {
           </tr>
         </thead>
 
-        <TrainingItem trainings={this.props.trainings} />
+        <TrainingItemContainer trainings={this.state.trainings} />
       </table>
     );
   }

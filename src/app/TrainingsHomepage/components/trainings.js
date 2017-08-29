@@ -6,7 +6,11 @@ import Search from './search';
 class Trainings extends React.Component {
   trainingsAddress = 'http://localhost:3000/trainings';
 
-  state = { trainingList: [], isLoading: true, searchFilter: '' };
+  constructor() {
+    super();
+    this.state = { trainingList: [], isLoading: true, searchFilter: '' };
+    this.getFilteredTrainings = this.getFilteredTrainings.bind(this);
+  }
 
   componentDidMount() {
     this.fetchTrainingsDetails();
@@ -22,19 +26,19 @@ class Trainings extends React.Component {
       });
   }
 
-  search = value => {
+  updateSearchFilter = value => {
     this.setState({ searchFilter: value });
   };
 
   getFilteredTrainings = () => {
     const filteredTrainings = [];
     const searchFilter = this.state.searchFilter;
+    console.log('search filter:', searchFilter);
     const trainings = this.state.trainingList;
 
     if (searchFilter === '') {
       return trainings;
     }
-
     for (const item of trainings) {
       if (
         item.name.includes(searchFilter) ||
@@ -43,22 +47,26 @@ class Trainings extends React.Component {
         filteredTrainings.push(item);
       }
     }
-
-    return filteredTrainings;
+    console.log('Filtered trainings: ', filteredTrainings);
+    // return filteredTrainings;
   };
 
   render() {
     return (
       <div>
-        <Search search={this.search} />
-
+        <Search
+          updateSearchFilter={this.updateSearchFilter}
+          search={this.getFilteredTrainings()}
+        />
         <br />
+
         {!this.state.isLoading &&
-          <TrainingsList trainings={this.getFilteredTrainings()} />}
+          <TrainingsList trainings={this.state.trainingList} />}
+
         <br />
         <br />
         <button type="button" className="NewTraining-button">
-          <Link to="/add-training">Add training</Link>
+          <Link to="/trainings-homepage/add-training">Add training</Link>
         </button>
       </div>
     );

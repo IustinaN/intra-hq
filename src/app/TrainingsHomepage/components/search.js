@@ -24,7 +24,8 @@ class Search extends React.Component {
               type="button"
               className="button"
               onClick={() => {
-                this.props.search(this.state.textFieldValue);
+                this.props.updateSearchFilter(this.state.textFieldValue);
+                this.props.search;
               }}
             >
               Search
